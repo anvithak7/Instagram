@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController restorationIdentifier="LoginViewController" storyboardIdentifier="LoginViewController" modalPresentationStyle="fullScreen" id="BYZ-38-t0r" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,7 +67,7 @@
                         <outlet property="passwordField" destination="IhR-Ib-Wev" id="zf4-HG-fun"/>
                         <outlet property="usernameField" destination="wca-lM-YFr" id="fZ9-jj-uOc"/>
                         <segue destination="FUf-eB-Xef" kind="show" identifier="SignUp" id="pa9-jt-Uje"/>
-                        <segue destination="qG8-2R-cr9" kind="show" identifier="LogInToFeed" id="sKo-P0-Kq5"/>
+                        <segue destination="VQN-9I-7Js" kind="show" identifier="LogInToFeed" id="sKo-P0-Kq5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -155,7 +155,7 @@
                         <outlet property="passwordField" destination="nnZ-iR-N3p" id="9Od-Zb-P5p"/>
                         <outlet property="usernameField" destination="09N-G7-vYv" id="fOP-Yb-fQV"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="LogIn" id="ZO1-Y4-9At"/>
-                        <segue destination="qG8-2R-cr9" kind="show" identifier="SignUpToFeed" id="U9a-FZ-O8R"/>
+                        <segue destination="VQN-9I-7Js" kind="show" identifier="SignUpToFeed" id="U9a-FZ-O8R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBh-0v-mPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -167,20 +167,45 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="qG8-2R-cr9" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CcU-pO-vbC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="oCq-91-Wlb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cPO-gf-hFD"/>
+                    <navigationItem key="navigationItem" id="cPO-gf-hFD">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="gOA-zt-YHj">
+                            <connections>
+                                <action selector="pressedLogout:" destination="qG8-2R-cr9" id="zEl-LA-oe6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SnV-3a-3w4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="710" y="798"/>
+            <point key="canvasLocation" x="1618.840579710145" y="797.54464285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rin-g1-ttE">
+            <objects>
+                <navigationController storyboardIdentifier="AuthenticatedViewController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="VQN-9I-7Js" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="dzd-7Y-oxl"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Lu-jt-rMg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="qG8-2R-cr9" kind="relationship" relationship="rootViewController" id="ioE-OO-aCo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kLs-v7-6ee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708.69565217391312" y="797.54464285714278"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="U9a-FZ-O8R"/>
+        <segue reference="sKo-P0-Kq5"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="systemBackgroundColor">
