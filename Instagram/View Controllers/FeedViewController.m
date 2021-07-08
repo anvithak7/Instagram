@@ -29,6 +29,9 @@
         // PFUser.current() will now be nil
     }];
 }
+- (IBAction)pressedShare:(id)sender {
+    [self performSegueWithIdentifier:@"composePostSegue" sender:nil];
+}
 
 /*
 #pragma mark - Navigation

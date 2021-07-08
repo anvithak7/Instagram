@@ -61,6 +61,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="YH7-ah-OpR" appends="YES" id="Qam-OL-e3y"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="1Bx-3h-NA2"/>
                     <connections>
@@ -71,6 +75,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YH7-ah-OpR">
+                    <connections>
+                        <action selector="onTapAnywhere:" destination="BYZ-38-t0r" id="xo1-ab-sVd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
         </scene>
@@ -147,6 +156,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="VfM-sD-Bxg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="5Ht-Lv-lba" appends="YES" id="rgQ-QH-HeJ"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="tbh-w4-pmE"/>
                     <connections>
@@ -159,30 +172,105 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBh-0v-mPs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5Ht-Lv-lba">
+                    <connections>
+                        <action selector="onTapAnywhere:" destination="FUf-eB-Xef" id="qyh-1R-cYv"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1330" y="94"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Home Feed-->
         <scene sceneID="H3h-4w-3ou">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="qG8-2R-cr9" customClass="FeedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CcU-pO-vbC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="oCq-91-Wlb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cPO-gf-hFD">
+                    <navigationItem key="navigationItem" title="Home Feed" id="cPO-gf-hFD">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="gOA-zt-YHj">
                             <connections>
                                 <action selector="pressedLogout:" destination="qG8-2R-cr9" id="zEl-LA-oe6"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="insta_camera_btn" id="zBg-rZ-sfr">
+                            <connections>
+                                <action selector="pressedShare:" destination="qG8-2R-cr9" id="hWC-R3-HGW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="iax-Jn-pLT" kind="presentation" identifier="composePostSegue" id="swY-kR-ixT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SnV-3a-3w4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1618.840579710145" y="797.54464285714278"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7cH-p7-JNq">
+            <objects>
+                <navigationController modalPresentationStyle="fullScreen" id="iax-Jn-pLT" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zeU-iH-6mT">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="QEf-VZ-lqm" kind="relationship" relationship="rootViewController" id="iAz-bD-I0i"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="54d-wd-j8Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2478" y="798"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="hod-QS-Qj3">
+            <objects>
+                <viewController id="QEf-VZ-lqm" customClass="ComposeViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ACI-4e-jfF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xMF-Dv-kZ8">
+                                <rect key="frame" x="20" y="106" width="150" height="159"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Write a caption..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jVn-5w-H5p">
+                                <rect key="frame" x="174" y="106" width="220" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vvC-4H-ETe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZPC-7y-v2c">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="QpN-W6-RDY">
+                            <connections>
+                                <action selector="onTapCancel:" destination="QEf-VZ-lqm" id="5oK-1F-RBX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="XCL-xS-JRV">
+                            <connections>
+                                <action selector="onTapShare:" destination="QEf-VZ-lqm" id="MOX-ym-Ady"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="composeCaptionText" destination="jVn-5w-H5p" id="hpJ-RT-en7"/>
+                        <outlet property="composePhotoView" destination="xMF-Dv-kZ8" id="SaG-7F-jNb"/>
+                        <segue destination="qG8-2R-cr9" kind="show" identifier="composeToFeed" id="koE-XP-pnD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gDT-QD-SKT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3356.521739130435" y="797.54464285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rin-g1-ttE">
@@ -205,9 +293,14 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sKo-P0-Kq5"/>
+        <segue reference="U9a-FZ-O8R"/>
+        <segue reference="koE-XP-pnD"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="insta_camera_btn" width="25" height="25"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

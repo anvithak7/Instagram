@@ -67,7 +67,10 @@
         // optional code for what happens after the alert controller has finished presenting
     }];
 }
-    
+- (IBAction)onTapAnywhere:(id)sender {
+    [self.view endEditing:true];
+}
+
 /*
 #pragma mark - Navigation
 
