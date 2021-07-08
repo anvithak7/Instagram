@@ -30,7 +30,7 @@
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
     
-    [newPost saveInBackgroundWithBlock: completion];
+    [newPost saveInBackgroundWithBlock: completion]; // Saves the post in one line (kind of)
 }
 
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
@@ -40,7 +40,7 @@
         return nil;
     }
     
-    NSData *imageData = UIImageJPEGRepresentation(image, 0.6);
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.8);
     // get image data and check if that is not nil
     if (!imageData) {
         return nil;

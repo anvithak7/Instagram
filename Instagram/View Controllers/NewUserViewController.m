@@ -30,8 +30,7 @@
     
     // set user properties
     newUser.email = self.emailField.text;
-    //TODO: figure out why the below is not working!
-    //newUser.fullName = self.fullNameField.text;
+    newUser[@"fullName"] = self.fullNameField.text;
     newUser.username = self.usernameField.text;
     newUser.password = self.passwordField.text;
     
@@ -39,7 +38,8 @@
     [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
         if (error != nil) {
             NSLog(@"Error: %@", error.localizedDescription);
-            [self createAlert:@"Unable to complete user registration. Please choose a unique username or check your internet connection!" error:@"Unable to Register User"];
+            [self createAlert:error.localizedDescription error:@"Unable to Register User"];
+            //@"Unable to complete user registration. Please enter a valid email address, choose a unique username, or check your internet connection!"
         } else {
             NSLog(@"User registered successfully");
             [self performSegueWithIdentifier:@"SignUpToFeed" sender:nil];
@@ -91,6 +91,18 @@
 
 - (IBAction)onTapAnywhere:(id)sender {
     [self.view endEditing:true];
+}
+
+/*The below is from StackOverflow - https://stackoverflow.com/questions/3139619/check-that-an-email-address-is-valid-on-ios
+    However, it turns out I don't really need this because Parse seems to check for valid emails. But the regex is useful, so leaving it here for the future. */
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString
+{
+   BOOL stricterFilter = NO;
+   NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
+   NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
+   NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+   NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+   return [emailTest evaluateWithObject:checkString];
 }
 
 /*
