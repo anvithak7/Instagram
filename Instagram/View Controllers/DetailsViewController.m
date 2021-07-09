@@ -23,6 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.profilePictureView.layer.masksToBounds = YES;
+    self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.width / 2;
     self.usernameLabel.text = _post.author[@"username"];
     self.postImageView.file = _post[@"image"];
     [self.postImageView loadInBackground];

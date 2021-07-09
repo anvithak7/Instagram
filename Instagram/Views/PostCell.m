@@ -25,6 +25,9 @@
 }
 
 - (void) setPost:(Post *)post {
+    // These two make the user's profile picture a circle.
+    self.userProfileView.layer.masksToBounds = YES;
+    self.userProfileView.layer.cornerRadius = self.userProfileView.frame.size.width / 2;
     PFUser *user = post[@"author"];
     [user fetchIfNeededInBackgroundWithBlock:^(PFObject * _Nullable object, NSError * _Nullable error) {
         if (error) {
