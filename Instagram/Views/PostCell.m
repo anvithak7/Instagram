@@ -31,9 +31,17 @@
             
         } else {
             self.usernameLabel.text = user[@"username"];
+            // I wanted the username to be bold and the caption text to be normal, so I had to use NSMutableAttributedStrings, where you have to allocate each time and append doesn't return anything:
+            NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:15.0]};
+            NSMutableAttributedString *username = [[NSMutableAttributedString alloc] initWithString:user[@"username"] attributes:attributes];
+            NSMutableAttributedString *captionAlone = [[NSMutableAttributedString alloc] initWithString:post[@"caption"]];
+            NSMutableAttributedString *captionText = [[NSMutableAttributedString alloc] init];
+            [captionText appendAttributedString:username];
+            [captionText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@" "]];
+            [captionText appendAttributedString:captionAlone];
+            self.postCaptionLabel.attributedText = captionText;
         }
     }];
-    self.postCaptionLabel.text = post[@"caption"];
     NSDate *createdDate = post.createdAt;
     //NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     // Configure the input format to parse the date string

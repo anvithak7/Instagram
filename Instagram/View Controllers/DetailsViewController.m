@@ -26,7 +26,14 @@
     self.usernameLabel.text = _post.author[@"username"];
     self.postImageView.file = _post[@"image"];
     [self.postImageView loadInBackground];
-    self.captionLabel.text = _post[@"caption"];
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]};
+    NSMutableAttributedString *username = [[NSMutableAttributedString alloc] initWithString:_post.author[@"username"] attributes:attributes];
+    NSMutableAttributedString *captionAlone = [[NSMutableAttributedString alloc] initWithString:_post[@"caption"]];
+    NSMutableAttributedString *captionText = [[NSMutableAttributedString alloc] init];
+    [captionText appendAttributedString:username];
+    [captionText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@" "]];
+    [captionText appendAttributedString:captionAlone];
+    self.captionLabel.attributedText = captionText;
     NSDate *createdDate = _post.createdAt;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MMMM d, yyyy  h:mm a";
