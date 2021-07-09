@@ -24,6 +24,8 @@
 		9E36858B26973D4200CE48A2 /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E36858A26973D4200CE48A2 /* ComposeViewController.m */; };
 		9E36858F2697448200CE48A2 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E36858E2697448200CE48A2 /* Post.m */; };
 		9E368593269763D600CE48A2 /* PostCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E368592269763D600CE48A2 /* PostCell.m */; };
+		9E70B5522698C39000B98ABA /* FontsFree-Net-Billabong.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E70B5512698C39000B98ABA /* FontsFree-Net-Billabong.ttf */; };
+		9EC8F9232698E10600A4FAA1 /* PostUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9EC8F9222698E10600A4FAA1 /* PostUserViewController.m */; };
 		9ECE99112697B35B00DC5BD8 /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE99102697B35B00DC5BD8 /* DetailsViewController.m */; };
 		9ECE99142697DA2400DC5BD8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9ECE99132697DA2400DC5BD8 /* ProfileViewController.m */; };
 		9EF6A0CEC694698011EE252B /* Pods_Instagram_InstagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62A5B698F439896D50B9581 /* Pods_Instagram_InstagramUITests.framework */; };
@@ -83,6 +85,9 @@
 		9E36858E2697448200CE48A2 /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
 		9E368591269763D600CE48A2 /* PostCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostCell.h; sourceTree = "<group>"; };
 		9E368592269763D600CE48A2 /* PostCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostCell.m; sourceTree = "<group>"; };
+		9E70B5512698C39000B98ABA /* FontsFree-Net-Billabong.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "FontsFree-Net-Billabong.ttf"; sourceTree = "<group>"; };
+		9EC8F9212698E10600A4FAA1 /* PostUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PostUserViewController.h; sourceTree = "<group>"; };
+		9EC8F9222698E10600A4FAA1 /* PostUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostUserViewController.m; sourceTree = "<group>"; };
 		9ECE990F2697B35B00DC5BD8 /* DetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
 		9ECE99102697B35B00DC5BD8 /* DetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		9ECE99122697DA2400DC5BD8 /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -170,6 +175,7 @@
 		9E36854726957CB500CE48A2 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				9E70B5502698C34900B98ABA /* fonts */,
 				9E368590269763BF00CE48A2 /* Views */,
 				9E36858C2697446000CE48A2 /* Models */,
 				9E36857F2696601500CE48A2 /* View Controllers */,
@@ -222,6 +228,8 @@
 				9ECE99102697B35B00DC5BD8 /* DetailsViewController.m */,
 				9ECE99122697DA2400DC5BD8 /* ProfileViewController.h */,
 				9ECE99132697DA2400DC5BD8 /* ProfileViewController.m */,
+				9EC8F9212698E10600A4FAA1 /* PostUserViewController.h */,
+				9EC8F9222698E10600A4FAA1 /* PostUserViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -242,6 +250,14 @@
 				9E368592269763D600CE48A2 /* PostCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9E70B5502698C34900B98ABA /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				9E70B5512698C39000B98ABA /* FontsFree-Net-Billabong.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E70B5522698C39000B98ABA /* FontsFree-Net-Billabong.ttf in Resources */,
 				9E36857E2696559900CE48A2 /* Keys.plist in Resources */,
 				9E36855826957CB600CE48A2 /* LaunchScreen.storyboard in Resources */,
 				9E36855526957CB600CE48A2 /* Assets.xcassets in Resources */,
@@ -484,6 +501,7 @@
 			files = (
 				9E36855026957CB500CE48A2 /* ViewController.m in Sources */,
 				9E36854A26957CB500CE48A2 /* AppDelegate.m in Sources */,
+				9EC8F9232698E10600A4FAA1 /* PostUserViewController.m in Sources */,
 				9ECE99112697B35B00DC5BD8 /* DetailsViewController.m in Sources */,
 				9E3685882696678600CE48A2 /* FeedViewController.m in Sources */,
 				9E368593269763D600CE48A2 /* PostCell.m in Sources */,

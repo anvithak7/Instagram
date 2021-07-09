@@ -8,11 +8,12 @@
 #import "FeedViewController.h"
 #import "LoginViewController.h"
 #import "DetailsViewController.h"
+#import "PostUserViewController.h"
 #import "SceneDelegate.h"
 #import "PostCell.h"
 #import "Parse/Parse.h"
 
-@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedViewController () <UITableViewDelegate, UITableViewDataSource, PostCellDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *feedPosts;
@@ -82,12 +83,17 @@
         DetailsViewController *detailViewController = [segue destinationViewController];
         detailViewController.post = post; // Passing over tweet to next view controller.
     }
+    if ([segue.identifier isEqual:@"picToProfile"]) {
+        PostUserViewController *postUserViewController = [segue destinationViewController];
+        postUserViewController.user = sender; // Passing over user to next view controller.
+    }
 }
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PostCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     Post *currentPost = self.feedPosts[indexPath.row];
+    cell.delegate = self;
     cell.post = currentPost;
     return cell;
 }
@@ -116,5 +122,9 @@
     }];
 }
 
+
+- (void) profilePicTap:(nonnull PostCell *)postCell didTap:(nonnull PFUser *)postUser {
+    [self performSegueWithIdentifier:@"picToProfile" sender:postUser];
+}
 
 @end

@@ -7,10 +7,13 @@
 
 #import "ComposeViewController.h"
 #import "Post.h"
+#import <QuartzCore/QuartzCore.h>
 
-@interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ComposeViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *composePhotoView;
 @property (weak, nonatomic) IBOutlet UITextView *composeCaptionText;
+@property (weak, nonatomic) IBOutlet UIButton *fromCameraButton;
+@property (weak, nonatomic) IBOutlet UIButton *fromPhotosButton;
 
 @end
 
@@ -19,6 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.fromCameraButton.layer.cornerRadius = 10;
+    self.fromCameraButton.clipsToBounds = YES;
+    self.fromPhotosButton.layer.cornerRadius = 10;
+    self.fromPhotosButton.clipsToBounds = YES;
+    self.composeCaptionText.delegate = self;
+    self.composeCaptionText.textColor = UIColor.lightGrayColor;
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -34,6 +43,51 @@
 
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
+
+- (void)textViewDidBeginEditing:(UITextView *)textView {
+    if (textView.textColor == UIColor.lightGrayColor) {
+        textView.text = @"";
+        textView.textColor = UIColor.blackColor;
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView {
+    if ([textView.text isEqual:@""]) {
+        textView.text = @"Write a caption...";
+        textView.textColor = UIColor.lightGrayColor;
+    }
+}
+
+- (IBAction)onTapAnywhere:(id)sender {
+    [self.composeCaptionText endEditing:true];
+}
+
+- (IBAction)onTapFromCamera:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
+    }
+    else {
+        [self createAlert:@"Please allow camera access and try again!" error:@"Unable to Acccess Camera"];
+    }
+}
+
+- (IBAction)onTapFromPhotos:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:imagePickerVC animated:YES completion:nil];
+    }
+    else {
+        [self createAlert:@"Please allow photo library access and try again!" error:@"Unable to Acccess Photo Library"];
+    }
+}
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     

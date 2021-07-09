@@ -1,22 +1,23 @@
 //
-//  ProfileViewController.m
+//  PostUserViewController.m
 //  Instagram
 //
-//  Created by Anvitha Kachinthaya on 7/8/21.
+//  Created by Anvitha Kachinthaya on 7/9/21.
 //
 
-#import "ProfileViewController.h"
+#import "PostUserViewController.h"
 
-@interface ProfileViewController ()
+@interface PostUserViewController ()
 
 @end
 
-@implementation ProfileViewController
+@implementation PostUserViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
+    PFUser *user = self.user;
+    NSLog(@"%@", user.username);
 }
 
 /*

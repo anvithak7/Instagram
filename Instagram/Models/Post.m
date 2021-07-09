@@ -16,9 +16,7 @@
 @dynamic image;
 @dynamic likeCount;
 @dynamic commentCount;
-// TODO: not sure about these two?
-@synthesize liked;
-@synthesize commented;
+@dynamic likesArray;
 
 + (nonnull NSString *)parseClassName {
     return @"Post";
@@ -32,8 +30,7 @@
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
-    newPost.liked = @NO;
-    newPost.commented = @NO;
+    newPost.likesArray = [NSMutableArray new];
     
     [newPost saveInBackgroundWithBlock: completion]; // Saves the post in one line (kind of)
 }
