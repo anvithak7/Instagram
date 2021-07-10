@@ -2,7 +2,7 @@
 
 **Instagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **X** hours spent in total
+Time spent: **25** hours spent in total
 
 ## User Stories
 
@@ -21,9 +21,9 @@ The following **optional** features are implemented:
 - [X] Run your app on your phone and use the camera to take the photo
 - [ ] User can load more posts once he or she reaches the bottom of the feed using infinite scrolling.
 - [X] Show the username and creation time for each post
-- [X] User can use a Tab Bar to switch between a Home Feed tab (all posts) and a Profile tab (only posts published by the current user)
+- [X] User can use a Tab Bar to switch between a Home Feed tab (all posts) and a Profile tab (only posts published by the current user (work in progress))
 - User Profiles:
-  - [X] Allow the logged in user to add a profile photo
+  - [X] Allow the logged in user to add and edit a profile photo
   - [X] Display the profile photo with each post
   - [X] Tapping on a post's username or profile photo goes to that user's profile page
 - [ ] After the user submits a new post, show a progress HUD while the post is being uploaded to Parse
@@ -36,11 +36,16 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
+- [X] A user can edit their name, username, and bio.
+- [X] Captions show up like on the real Instagram, with username bolded and attached to the caption.
+- [X] Launch screen with Instagram font (and added Instagram font everywhere).
+- [X] New user page looks like the real Instagram.
+- [X] Made user interface cleaner with compose view having options to pick image from camera or from photos if user closes ImagePickerController accidentally
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. What are more effective ways of adding a scrollable collection view to the profile page (which causes the bio, etc. to scroll up too?)?
+2. How do we implement the UI for comments?
 
 ## Video Walkthrough
 
@@ -55,6 +60,9 @@ GIF created with [Kap](https://getkap.co/).
 List an 3rd party libraries, icons, graphics, or other assets you used in your app.
 
 - [AFNetworking](https://github.com/AFNetworking/AFNetworking) - networking task library
+- [Parse](https://www.back4app.com/docs/get-started/welcome)
+- [Parse/UI](https://github.com/parse-community/ParseUI-iOS)
+- [DateTools](https://github.com/MatthewYork/DateTools)
 
 
 ## Notes
@@ -63,7 +71,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [2021] [name of copyright owner]
+    Copyright [2021] [Anvitha Kachinthaya]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

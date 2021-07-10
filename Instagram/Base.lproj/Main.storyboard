@@ -41,8 +41,11 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkt-gO-VSP">
                                 <rect key="frame" x="24" y="282" width="327" height="33"/>
+                                <color key="backgroundColor" name="AccentColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Login"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="pressedLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Azt-KQ-NAR"/>
                                 </connections>
@@ -155,8 +158,11 @@
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqd-Rs-2Km">
                                 <rect key="frame" x="24" y="366" width="327" height="33"/>
+                                <color key="backgroundColor" name="AccentColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Sign Up"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="pressedSignUp:" destination="FUf-eB-Xef" eventType="touchUpInside" id="06X-eA-myc"/>
                                 </connections>
@@ -1133,7 +1139,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sKo-P0-Kq5"/>
+        <segue reference="U9a-FZ-O8R"/>
         <segue reference="oCp-M2-bCW"/>
     </inferredMetricsTieBreakers>
     <resources>
