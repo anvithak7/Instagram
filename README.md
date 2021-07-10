@@ -64,7 +64,7 @@ Here's a walkthrough of implemented user stories:
 <img src='http://g.recordit.co/LsI6DPhz1N.gif' title='Post Details, Like Functionality, Clicking on Profile Image/Username Leads to Profile Page of Post User' width='' alt='Post Details, Like Functionality, Clicking on Profile Image/Username Leads to Profile Page of Post User' />
 
 - Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts
-<img src='http://g.recordit.co/jfGqzVheok.gif' title='Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts' width='' alt='Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts' />
+<img src='http://g.recordit.co/IVa4j6phxS.gif' title='Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts' width='' alt='Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts' />
 
 - User Login Validation and Editing Profile to Add Profile Picture and Change Name/Username/Bio
 <img src='http://g.recordit.co/P4qtRtEoKM.gif' title='Editing Profile to Add Profile Picture and Change Name/Username/Bio' width='' alt='Editing Profile to Add Profile Picture and Change Name/Username/Bio' />
