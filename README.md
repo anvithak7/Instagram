@@ -64,12 +64,18 @@ Here's a walkthrough of implemented user stories:
 <img src='http://g.recordit.co/LsI6DPhz1N.gif' title='Post Details, Like Functionality, Clicking on Profile Image/Username Leads to Profile Page of Post User' width='' alt='Post Details, Like Functionality, Clicking on Profile Image/Username Leads to Profile Page of Post User' />
 
 - Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts
-<blockquote lang="en"><a href="http://g.recordit.co/cGmY98LexY.gif">Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts</a></blockquote>
+<blockquote lang="en"><a href="http://g.recordit.co/IVa4j6phxS.gif">Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts</a></blockquote>
 <img src='http://g.recordit.co/IVa4j6phxS.gif' title='Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts' width='' alt='Pull to Refresh, Long Captions Supported, User Can View 20 Latest Posts' />
 
 - User Login Validation and Editing Profile to Add Profile Picture and Change Name/Username/Bio
 <img src='http://g.recordit.co/P4qtRtEoKM.gif' title='Editing Profile to Add Profile Picture and Change Name/Username/Bio' width='' alt='Editing Profile to Add Profile Picture and Change Name/Username/Bio' />
 
+- Instagram on a Real Phone with Camera
+<blockquote lang="en"><a href="https://imgur.com/a/hQ3XOa4.gif">Instagram on a Real Phone with Camera</a></blockquote>
+<img src='https://imgur.com/a/hQ3XOa4.gif' title='Instagram on a Real Phone with Camera' width='' alt='Instagram on a Real Phone with Camera' />
+
+- Screen Rotations and Different Phone Sizes
+<img src='http://g.recordit.co/xm4jrqmcQp.gif' title='Screen Rotations and Different Phone Sizes' width='' alt='Screen Rotations and Different Phone Sizes' />
 
 GIF created with [Kap](https://getkap.co/).
 
