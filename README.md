@@ -45,7 +45,7 @@ The following **additional** features are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. What are more effective ways of adding a scrollable collection view to the profile page (which causes the bio, etc. to scroll up too?)?
-2. How do we implement the UI for comments?
+2. What are some ways to implement the UI for comments, replies, and reactions?
 
 ## Video Walkthrough
 
@@ -75,6 +75,7 @@ Here's a walkthrough of implemented user stories:
 <img src='https://imgur.com/a/hQ3XOa4.gif' title='Instagram on a Real Phone with Camera' width='' alt='Instagram on a Real Phone with Camera' />
 
 - Screen Rotations and Different Phone Sizes
+<blockquote lang="en"><a href="http://g.recordit.co/xm4jrqmcQp.gif">Instagram on a Real Phone with Camera</a></blockquote>
 <img src='http://g.recordit.co/xm4jrqmcQp.gif' title='Screen Rotations and Different Phone Sizes' width='' alt='Screen Rotations and Different Phone Sizes' />
 
 GIF created with [Kap](https://getkap.co/).
