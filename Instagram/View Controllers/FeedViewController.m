@@ -28,6 +28,7 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.user = [PFUser currentUser];
     [self getPosts];
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(getPosts) forControlEvents:UIControlEventValueChanged];
@@ -81,7 +82,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
         Post *post = self.feedPosts[indexPath.row];
         DetailsViewController *detailViewController = [segue destinationViewController];
-        detailViewController.post = post; // Passing over tweet to next view controller.
+        detailViewController.post = post; // Passing over post to next view controller.
     }
     if ([segue.identifier isEqual:@"picToProfile"]) {
         PostUserViewController *postUserViewController = [segue destinationViewController];

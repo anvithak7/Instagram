@@ -31,7 +31,7 @@
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
     newPost.likesArray = [NSMutableArray new];
-    
+    [newPost.author incrementKey:@"userPostsCount"];
     [newPost saveInBackgroundWithBlock: completion]; // Saves the post in one line (kind of)
 }
 

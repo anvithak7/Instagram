@@ -8,6 +8,11 @@
 #import "PostUserViewController.h"
 
 @interface PostUserViewController ()
+@property (weak, nonatomic) IBOutlet PFImageView *profilePictureView;
+@property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberOfPostsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *fullNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bioLabel;
 
 @end
 
@@ -16,8 +21,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    PFUser *user = self.user;
-    NSLog(@"%@", user.username);
+        self.profilePictureView.layer.masksToBounds = YES;
+        self.profilePictureView.layer.cornerRadius = self.profilePictureView.frame.size.width / 2;
+        self.usernameLabel.text = self.user.username;
+        self.fullNameLabel.text = self.user[@"fullName"];
+        self.bioLabel.text = self.user[@"bioText"];
+        self.numberOfPostsLabel.text = [NSString stringWithFormat:@"%@", self.user[@"userPostsCount"]];
+        self.profilePictureView.file = self.user[@"profileImage"];
+        [self.profilePictureView loadInBackground];
 }
 
 /*

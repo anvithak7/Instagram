@@ -1,5 +1,5 @@
 //
-//  PostUserViewController.h
+//  EditProfileViewController.h
 //  Instagram
 //
 //  Created by Anvitha Kachinthaya on 7/9/21.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PostUserViewController : UIViewController
+@interface EditProfileViewController : UIViewController
 @property (strong, nonatomic) PFUser *user;
 @end
 

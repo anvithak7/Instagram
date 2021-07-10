@@ -8,13 +8,14 @@
 #import "DetailsViewController.h"
 
 @interface DetailsViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *profilePictureView;
+@property (weak, nonatomic) IBOutlet PFImageView *profilePictureView;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *postImageView;
 @property (weak, nonatomic) IBOutlet UIButton *likeButton;
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UILabel *captionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timestampLabel;
+@property (weak, nonatomic) IBOutlet UILabel *likeCountLabel;
 
 @end
 
@@ -28,6 +29,8 @@
     self.usernameLabel.text = _post.author[@"username"];
     self.postImageView.file = _post[@"image"];
     [self.postImageView loadInBackground];
+    self.profilePictureView.file = _post.author[@"profileImage"];
+    [self.profilePictureView loadInBackground];
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0]};
     NSMutableAttributedString *username = [[NSMutableAttributedString alloc] initWithString:_post.author[@"username"] attributes:attributes];
     NSMutableAttributedString *captionAlone = [[NSMutableAttributedString alloc] initWithString:_post[@"caption"]];
@@ -40,9 +43,29 @@
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = @"MMMM d, yyyy  h:mm a";
     self.timestampLabel.text = [formatter stringFromDate:createdDate];
-    [self.likeButton setTitle:[NSString stringWithFormat:@"%@", _post.likeCount] forState:UIControlStateNormal];
-    [self.commentButton setTitle:[NSString stringWithFormat:@"%@", _post.commentCount] forState:UIControlStateNormal];
+    if ([self.post.likesArray containsObject:PFUser.currentUser.objectId]) {
+        [self.likeButton setSelected:YES];
+    } else if (![self.post.likesArray containsObject:PFUser.currentUser.objectId]) {
+        [self.likeButton setSelected:NO];
+    }
+    self.likeCountLabel.text = [NSString stringWithFormat:@"%@", self.post[@"likeCount"]];
 }
+
+- (IBAction)onTapLike:(id)sender {
+    if ([self.post.likesArray containsObject:PFUser.currentUser.objectId]) {
+        [self.likeButton setSelected:NO];
+        [self.post removeObject:PFUser.currentUser.objectId forKey:@"likesArray"];
+        self.post[@"likeCount"] = [NSNumber numberWithInt:([self.post.likeCount intValue] - 1)];
+        [self.post saveInBackground];
+    } else if (![self.post.likesArray containsObject:PFUser.currentUser.objectId]) {
+        [self.likeButton setSelected:YES];
+        [self.post addObject:PFUser.currentUser.objectId forKey:@"likesArray"];
+        self.post[@"likeCount"] = [NSNumber numberWithInt:([self.post.likeCount intValue] + 1)];
+        [self.post saveInBackground];
+    }
+    self.likeCountLabel.text = [NSString stringWithFormat:@"%@", self.post[@"likeCount"]];
+}
+
 
 /*
 #pragma mark - Navigation

@@ -54,89 +54,37 @@
             [captionText appendAttributedString:[[NSMutableAttributedString alloc] initWithString:@" "]];
             [captionText appendAttributedString:captionAlone];
             self.postCaptionLabel.attributedText = captionText;
+            if (user[@"profileImage"]) {
+                self.userProfileView.file = user[@"profileImage"];
+                [self.userProfileView loadInBackground];
+            }
         }
     }];
     NSDate *createdDate = post.createdAt;
     self.timeSincePostedLabel.text = createdDate.timeAgoSinceNow;
     self.postImageView.file = post[@"image"];
     [self.postImageView loadInBackground];
+    if ([self.post.likesArray containsObject:PFUser.currentUser.objectId]) {
+        [self.likeButton setSelected:YES];
+    } else if (![self.post.likesArray containsObject:PFUser.currentUser.objectId]) {
+        [self.likeButton setSelected:NO];
+    }
 }
 
 - (IBAction)onTapLike:(id)sender {
-    if ([self.post.likesArray containsObject:PFUser.currentUser[@"objectID"]]) {
+    if ([self.post.likesArray containsObject:PFUser.currentUser.objectId]) {
         [self.likeButton setSelected:NO];
         [self.post removeObject:PFUser.currentUser.objectId forKey:@"likesArray"];
         self.post[@"likeCount"] = [NSNumber numberWithInt:([self.post.likeCount intValue] - 1)];
         [self.post saveInBackground];
-        /*PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-        // Retrieve the object by id
-        [query getObjectInBackgroundWithId:_post[@"objectID"]
-                                     block:^(PFObject *parseObject, NSError *error) {
-            int likeCount = [self.post.likeCount intValue] - 1;
-            parseObject[@"likeCount"] = @(likeCount);
-            parseObject[@"likesArray"] = self.post.likesArray;
-            [parseObject saveInBackground];
-            NSLog(@"Updated unlike");
-        }]; */
-    } else if (![self.post.likesArray containsObject:PFUser.currentUser[@"objectID"]]) {
+    } else if (![self.post.likesArray containsObject:PFUser.currentUser.objectId]) {
         [self.likeButton setSelected:YES];
         [self.post addObject:PFUser.currentUser.objectId forKey:@"likesArray"];
         self.post[@"likeCount"] = [NSNumber numberWithInt:([self.post.likeCount intValue] + 1)];
         [self.post saveInBackground];
-        /*PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-        // Retrieve the object by id
-        [query getObjectInBackgroundWithId:_post[@"objectID"]
-                                     block:^(PFObject *parseObject, NSError *error) {
-            int likeCount = [self.post.likeCount intValue] + 1;
-            parseObject[@"likeCount"] = @(likeCount);
-            parseObject[@"likesArray"] = self.post.likesArray;
-            [parseObject saveInBackground];
-            NSLog(@"Updated unlike");
-        }]; */
-        //[self.post incrementKey:@"likeCount"];
-        /*[self.post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-          if (succeeded) {
-            // The score key has been incremented
-              NSLog(@"Incremented like count!");
-          } else {
-            // There was a problem, check error.description
-              NSLog(@"Error: %@", error.localizedDescription);
-          }
-        }];*/
     }
 }
 
-/* This method doesn't seem to work no matter what I do
-- (IBAction)onTapComment:(id)sender {
-    if (_post.commented == YES) {
-        PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-        // Retrieve the object by id
-        [query getObjectInBackgroundWithId:_post[@"objectID"]
-                                     block:^(PFObject *parseObject, NSError *error) {
-            parseObject[@"commented"] = @NO;
-            int commentCount = [self.post.commentCount intValue] - 1;
-            parseObject[@"commentCount"] = @(commentCount);
-            [parseObject saveInBackground];
-            NSLog(@"Updated uncomment");
-        }];
-        [self.commentButton setImage:[UIImage systemImageNamed:@"bubble.right"] forState:UIControlStateNormal];
-    }
-    else if (_post.commented == NO) {
-        PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-        // Retrieve the object by id
-        [query getObjectInBackgroundWithId:_post[@"objectID"]
-                                     block:^(PFObject *parseObject, NSError *error) {
-            parseObject[@"commented"] = @YES;
-            int commentCount = [self.post.commentCount intValue] + 1;
-            parseObject[@"commentCount"] = @(commentCount);
-            [parseObject saveInBackground];
-            NSLog(@"Updated comment");
-        }];
-        [self.commentButton setImage:[UIImage systemImageNamed:@"bubble.right.fill"] forState:UIControlStateNormal];
-    }
-}
- */
-//I don't know how to segue between a cell item and a view controller!
 - (IBAction) onTapProfile:(id)sender {
     [self.delegate profilePicTap:self didTap:self.postUser];
 }
