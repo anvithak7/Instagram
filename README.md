@@ -51,6 +51,9 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
+- Login/Persisted User/Logout Functionality
+<img src='http://g.recordit.co/gNVzXSV6vH.gif' title='Login/Persistence/Logout' width='' alt='Login/Persistence/Logout' />
+
 - Instagram New User Page Validation
 <img src='http://g.recordit.co/Wxq7S27XSO.gif' title='New User Page Validation' width='' alt='New User Page Validation' />
 
