@@ -21,6 +21,7 @@
 
 @implementation ProfileViewController
 
+// This just sets up the page with all of the required elements to show a profile page - a circular picture, the username, name, number of posts, and bio.
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.user = PFUser.currentUser;
@@ -42,12 +43,14 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    // We want to make sure we pass the current user over to the edit profile screen to pre-populate fields, so we do a little preparation.
     if ([segue.identifier isEqual:@"editProfile"]) {
         EditProfileViewController *editprofilecontroller = [segue destinationViewController];
         editprofilecontroller.user = self.user; // Passing over user to next view controller.
     }
 }
 
+// This just sets up the page with all of the required elements to show a profile page. I have it twice to make sure that new profile data is loaded upon appearing, but I think I really just need one of these.
 - (void)viewDidAppear:(BOOL)animated {
     self.user = PFUser.currentUser;
     // Do any additional setup after loading the view.
