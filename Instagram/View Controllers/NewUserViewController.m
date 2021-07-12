@@ -18,10 +18,14 @@
 
 @implementation NewUserViewController
 
+// This view controller is associated with registering a new user to Instagram.
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+// The core functionality of this view controller. Given fields of information, they are validated and then sent to the Parse database to be added as a new user.
 - (IBAction)pressedSignUp:(id)sender {
     BOOL accepted = [self validateFields];
     if (accepted) {
@@ -40,6 +44,7 @@
             NSLog(@"Error: %@", error.localizedDescription);
             [self createAlert:error.localizedDescription error:@"Unable to Register User"];
             //@"Unable to complete user registration. Please enter a valid email address, choose a unique username, or check your internet connection!"
+            // I changed the above because the error descriptions are pretty useful instead of a generic catch-all statement.
         } else {
             NSLog(@"User registered successfully");
             [self performSegueWithIdentifier:@"SignUpToFeed" sender:nil];
@@ -48,30 +53,28 @@
     }];
     }
 }
+
+// This allows the user to switch between a login and sign up page.
 - (IBAction)pressedLogIn:(id)sender {
     [self performSegueWithIdentifier:@"LogIn" sender:nil];
 }
 
+// A function to create alerts, so I don't have to reuse all this code again within functions.
 - (void) createAlert: (NSString *)message error:(NSString*)error {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:error
-                                                                               message:message
-                                                                        preferredStyle:(UIAlertControllerStyleAlert)];
-
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:error message:message preferredStyle:(UIAlertControllerStyleAlert)];
     // create an OK action
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                             // handle response here.
-                                                     }];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    // handle response here.
+    }];
     // add the OK action to the alert controller
     [alert addAction:okAction];
-    
     // show alert
     [self presentViewController:alert animated:YES completion:^{
         // optional code for what happens after the alert controller has finished presenting
     }];
 }
 
+// The below method checks all of the fields and calls out errors in case any of the fields are blank. Parse seems to validate emails and valid strings, so I didn't have to do that here.
 - (BOOL) validateFields {
     if ([self.emailField.text isEqual:@""]) {
         [self createAlert:@"Please enter a valid email and try again!" error:@"Unable to Register User"];
