@@ -11,9 +11,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// We declare this a class because otherwise, PostCell used in the delegate methods will not have been declared yet.
 @class PostCell;
 
-@protocol PostCellDelegate
+@protocol PostCellDelegate // We want the view controller to be able to know when an element within a post cell has been tapped, or else we can't segue to another screen.
+// Thus, we made a delegate protocol.
 
 - (void) profilePicTap:(PostCell*) postCell didTap:(PFUser*) postUser;
 
