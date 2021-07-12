@@ -9,6 +9,9 @@
 
 @implementation CurrentProfileCell
 
+// This file is associated with an older design for the profile view, which included a table view to add a collection view and show only a user's posts on their page.
+// However, it is not currently in use since I had to cut this feature before the deadline.
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
