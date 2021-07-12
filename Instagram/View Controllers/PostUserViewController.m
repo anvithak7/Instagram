@@ -18,6 +18,9 @@
 
 @implementation PostUserViewController
 
+// This is the same as Profile View Controller, but since this view controller shows the user associated with a post, who might be another user, there is no edit button or way to edit this page.
+// This simply allows users to view another user's profile.
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
