@@ -29,28 +29,28 @@
 - (IBAction)pressedSignUp:(id)sender {
     BOOL accepted = [self validateFields];
     if (accepted) {
-    // initialize a user object
-    PFUser *newUser = [PFUser user];
-    
-    // set user properties
-    newUser.email = self.emailField.text;
-    newUser[@"fullName"] = self.fullNameField.text;
-    newUser.username = self.usernameField.text;
-    newUser.password = self.passwordField.text;
-    
-    // call sign up function on the object
-    [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
-        if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);
-            [self createAlert:error.localizedDescription error:@"Unable to Register User"];
-            //@"Unable to complete user registration. Please enter a valid email address, choose a unique username, or check your internet connection!"
-            // I changed the above because the error descriptions are pretty useful instead of a generic catch-all statement.
-        } else {
-            NSLog(@"User registered successfully");
-            [self performSegueWithIdentifier:@"SignUpToFeed" sender:nil];
-            // manually segue to logged in view
-        }
-    }];
+        // initialize a user object
+        PFUser *newUser = [PFUser user];
+        
+        // set user properties
+        newUser.email = self.emailField.text;
+        newUser[@"fullName"] = self.fullNameField.text;
+        newUser.username = self.usernameField.text;
+        newUser.password = self.passwordField.text;
+        
+        // call sign up function on the object
+        [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
+            if (error != nil) {
+                NSLog(@"Error: %@", error.localizedDescription);
+                [self createAlert:error.localizedDescription error:@"Unable to Register User"];
+                //@"Unable to complete user registration. Please enter a valid email address, choose a unique username, or check your internet connection!"
+                // I changed the above because the error descriptions are pretty useful instead of a generic catch-all statement.
+            } else {
+                NSLog(@"User registered successfully");
+                [self performSegueWithIdentifier:@"SignUpToFeed" sender:nil];
+                // manually segue to logged in view
+            }
+        }];
     }
 }
 
